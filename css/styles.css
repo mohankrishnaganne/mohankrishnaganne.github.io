@@ -1,20 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-/*=============================================
-Css Indexing
-===============================================
-1 Base CSS
 
-===============================================*/
-
-
-
-
-
-/*===========================================
-Base CSS
-============================================*/
 *{
   margin: 0;
   padding: 0;
@@ -189,7 +176,9 @@ Padding & Margins CSS
 .p-right30{
   padding-right: 30px;
 }
-
+.p-right100{
+  padding-right: 100px;
+}
 .p-left5{
   padding-left: 5px;
 }
@@ -208,7 +197,9 @@ Padding & Margins CSS
 .p-left30{
   padding-left: 30px;
 }
-
+.p-left100{
+  padding-left: 100px;
+}
 .m-5{
   margin:: 5px;
 }
@@ -483,7 +474,7 @@ Page Styles
 
 .social-icons-head ul li a:hover {
     color: #000;
-    transform: scale(1.2) translateY(-5px);
+    transform: scale(1.2) translateY(-10px);
 }
 .sec-title {
     margin-bottom: 50px;
@@ -507,3 +498,5 @@ Page Styles
     font-weight: 500;
     letter-spacing: 5px;
 }
+
+
