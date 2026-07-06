@@ -45,70 +45,16 @@
 		}
 
 
-		.title-s {
-			display: block;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			font-weight: 600;
-			font-size: 12px;
-			color: #ffbd39;
+		.skill-mf .progress {
+			/* background-color: #cde1f8; */
+			margin: .5rem 0 1.2rem 0;
+			border-radius: 0;
+			height: .7rem;
 		}
 
-		.skill-mf {
-			margin-top: 1.8rem;
-		}
-
-		.skill-mf .title-s {
-			font-size: 14px;
-			margin-bottom: .8rem;
-		}
-
-		.skill-groups {
-			background: rgba(0, 0, 0, .1);
-			border: 1px solid rgba(255, 255, 255, .12);
-			border-radius: 6px;
-			padding: 1.4rem 1.5rem;
-			box-shadow: 0 10px 24px rgba(0, 0, 0, .12);
-		}
-
-		.skill-group {
-			margin-bottom: 1.1rem;
-		}
-
-		.skill-group:last-child {
-			margin-bottom: 0;
-		}
-
-		.skill-group-label {
-			display: block;
-			font-size: 11px;
-			font-weight: 600;
-			letter-spacing: 2px;
-			text-transform: uppercase;
-			color: #a0f669;
-			margin-bottom: .6rem;
-		}
-
-		.skill-tags {
-			display: flex;
-			flex-wrap: wrap;
-			gap: .4rem;
-		}
-
-		.skill-tags span {
-			font-size: 12.5px;
-			color: #fff;
-			background: rgba(255, 255, 255, .16);
-			border: 1px solid rgba(255, 255, 255, .3);
-			padding: .3rem .7rem;
-			border-radius: 30px;
-			transition: all .25s ease;
-		}
-
-		.skill-tags span:hover {
-			border-color: #ffbd39;
-			color: #16202e;
-			background: #ffbd39;
+		.skill-mf .progress .progress-bar {
+			height: .7rem;
+			background-color: #ffbd39;
 		}
 
 
@@ -298,62 +244,34 @@
 								<div class="skill-mf">
 									<p class="title-s">Skills</p>
 
-									<div class="skill-groups">
-										<div class="skill-group">
-											<span class="skill-group-label">Languages</span>
-											<div class="skill-tags">
-												<span>Python</span><span>SQL</span><span>Scala</span>
-											</div>
-										</div>
+									<span>PYTHON</span> <span class="pull-right">90%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 90%"
+											aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
 
-										<div class="skill-group">
-											<span class="skill-group-label">ML &amp; Deep Learning</span>
-											<div class="skill-tags">
-												<span>PyTorch</span><span>TensorFlow</span><span>Scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>Feature Engineering</span><span>Time-Series Forecasting</span><span>Explainable AI</span>
-											</div>
-										</div>
+									<span>Machine Learning</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%"
+											aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
 
-										<div class="skill-group">
-											<span class="skill-group-label">Generative AI &amp; LLMs</span>
-											<div class="skill-tags">
-												<span>Hugging Face</span><span>LLaMA</span><span>GPT APIs</span><span>LangChain</span><span>LangGraph</span><span>Tool-Calling Agents</span><span>LoRA / QLoRA</span><span>PEFT</span><span>RAG</span><span>Embeddings</span>
-											</div>
-										</div>
+									<span>Generative AI &amp; LLMs</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 85%"
+											aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
 
-										<div class="skill-group">
-											<span class="skill-group-label">Vector DBs &amp; Retrieval</span>
-											<div class="skill-tags">
-												<span>Pinecone</span><span>FAISS</span><span>Weaviate</span><span>Elasticsearch</span><span>Hybrid Search</span>
-											</div>
-										</div>
+									<span>SQL</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 80%"
+											aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+									</div>
 
-										<div class="skill-group">
-											<span class="skill-group-label">MLOps &amp; AI Infra</span>
-											<div class="skill-tags">
-												<span>MLflow</span><span>Weights &amp; Biases</span><span>Airflow</span><span>Docker</span><span>Kubernetes</span><span>CI/CD</span>
-											</div>
-										</div>
-
-										<div class="skill-group">
-											<span class="skill-group-label">Distributed &amp; Data Eng</span>
-											<div class="skill-tags">
-												<span>Apache Spark</span><span>Databricks</span><span>Snowflake</span><span>Kafka</span><span>Ray</span>
-											</div>
-										</div>
-
-										<div class="skill-group">
-											<span class="skill-group-label">Model Serving</span>
-											<div class="skill-tags">
-												<span>FastAPI</span><span>gRPC</span><span>vLLM</span><span>ONNX Runtime</span><span>TensorRT</span>
-											</div>
-										</div>
-
-										<div class="skill-group">
-											<span class="skill-group-label">Cloud &amp; Platforms</span>
-											<div class="skill-tags">
-												<span>AWS</span><span>Azure OpenAI</span><span>Terraform</span><span>PostgreSQL</span><span>MongoDB</span><span>Git</span>
-											</div>
-										</div>
+									<span>Cloud &amp; MLOps</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 80%;"
+											aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
 									</div>
 								</div>
 							</div>
