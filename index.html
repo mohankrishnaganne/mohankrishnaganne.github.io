@@ -461,48 +461,57 @@
 				<div class="proj-grid">
 					<article class="card proj reveal">
 						<span class="proj-idx">PROJECT 01 <em class="live-tag">Live</em></span>
-						<h3>Agentic Profile Manager</h3>
+						<h3>Portfolio Manager &mdash; multi-agent career platform</h3>
 						<p>
-							An event-driven multi-agent platform that turns a resume into a structured career
-							profile, then tailors it per target role, checks ATS readiness against a job
-							description, publishes a portfolio site from it, and tracks applications, recruiters
-							and interview prep in one workspace.
+							Turns a resume into a canonical, versioned profile, then generates a published
+							portfolio site and JD-tailored resumes from that single source &mdash; alongside ATS
+							readiness scoring, job search, recruiter outreach drafts, interview prep and
+							application tracking.
 						</p>
 						<p>
-							Three LangGraph agents do the work: a <b>parser</b> extracts structure from raw PDFs,
-							a <b>generator</b> engineers a responsive single-page site from the JSON profile, and a
-							<b>deployer</b> uses OAuth to create the GitHub repository, commit the source and
-							trigger a live deployment.
+							<b>The LLM never writes HTML.</b> The portfolio graph's <code>curate</code> step emits
+							content JSON only; a hand-built Jinja2 theme renders it deterministically, so a design
+							tweak is a token change rather than a full regeneration.
 						</p>
 						<p>
-							Long LLM runs used to die on 504 gateway timeouts, so I decoupled ingestion from
-							processing entirely: <b>Redis</b> brokers the queue and Pub/Sub streams each agent's
-							reasoning back over SSE, letting workers think for as long as they need while the UI
-							stays responsive. Ships to <b>AWS ECS Fargate</b> through GitHub Actions and ECR.
+							Tailoring runs <code>parse_jd &rarr; match &rarr; tailor &rarr; guard</code>, where
+							matching is deterministic keyword overlap rather than an LLM call. The
+							<b>truthfulness guard</b> requires every tailored bullet to trace to a specific
+							<code>(experience_id, bullet_index)</code> in the source profile, re-checking the
+							anchor itself instead of trusting the model's own "supported" flag. Anything
+							untraceable is excluded from exports rather than shipped silently.
+						</p>
+						<p>
+							Serverless and fully async: a FastAPI Lambda enqueues to SQS and returns immediately,
+							a container-image worker Lambda runs the LangGraph agents, and DynamoDB carries job
+							status the frontend polls. Shared Pydantic models enforce one schema across the API,
+							the LLM's structured output and the renderers. Publishing to GitHub is a separate,
+							explicit job &mdash; never a side effect of generating.
 						</p>
 						<div class="metrics">
-							<div><b>3</b><span>Orchestrated agents</span></div>
-							<div><b>SSE</b><span>Streamed agent reasoning</span></div>
+							<div><b>0</b><span>Lines of LLM-written HTML</span></div>
+							<div><b>100%</b><span>Exported bullets traced to source</span></div>
 						</div>
 						<div class="chips">
-							<span>LangGraph</span><span>Gemini</span><span>Redis Pub/Sub</span><span>Flask</span>
-							<span>SSE</span><span>Next.js</span><span>Docker</span><span>AWS ECS Fargate</span>
-							<span>CloudFront</span><span>GitHub Actions</span>
+							<span>LangGraph</span><span>Gemini 2.5 Flash</span><span>FastAPI</span>
+							<span>AWS Lambda</span><span>SQS</span><span>DynamoDB</span><span>Cognito</span>
+							<span>S3 + CloudFront</span><span>Next.js</span><span>Jinja2</span>
+							<span>WeasyPrint</span><span>AWS SAM</span><span>Pydantic</span>
 						</div>
 						<div class="proj-links">
 							<a href="https://d36v40mvb8e2yu.cloudfront.net/" target="_blank"
 								rel="noopener noreferrer">
 								Open the live app
-								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 									<path d="M7 17 17 7M9 7h8v8"></path>
 								</svg>
 							</a>
-							<a href="https://github.com/mohankrishnaganne/agentic-profile-manager" target="_blank"
-								rel="noopener noreferrer">
+							<a href="https://github.com/mohankrishnaganne/agentic-profile-manager/tree/DevBranch2.0"
+								target="_blank" rel="noopener noreferrer">
 								Source
-								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 									<path d="M7 17 17 7M9 7h8v8"></path>
 								</svg>
 							</a>

@@ -412,6 +412,11 @@ html[data-theme="light"] .portrait::after{ background:linear-gradient(180deg, tr
   animation:pulse 1.8s ease-in-out infinite;
 }
 @keyframes pulse{ 50%{ opacity:.3; transform:scale(.8) } }
+.proj code{
+  font-family:var(--font-mono); font-size:.86em; color:var(--text);
+  background:var(--surface-2); border:1px solid var(--line);
+  border-radius:5px; padding:.08em .38em; overflow-wrap:break-word;
+}
 .proj-links{ display:flex; flex-wrap:wrap; gap:1.25rem; padding-top:.25rem; }
 .proj-links a{
   font-size:.86rem; font-weight:600; color:var(--cyan);
