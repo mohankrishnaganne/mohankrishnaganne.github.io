@@ -464,29 +464,16 @@
 						<h3>Portfolio Manager &mdash; multi-agent career platform</h3>
 						<p>
 							Turns a resume into a canonical, versioned profile, then generates a published
-							portfolio site and JD-tailored resumes from that single source &mdash; alongside ATS
-							readiness scoring, job search, recruiter outreach drafts, interview prep and
-							application tracking.
+							portfolio site and JD-tailored resumes from it &mdash; with ATS scoring, job search,
+							outreach drafts and application tracking built around the same source.
 						</p>
 						<p>
-							<b>The LLM never writes HTML.</b> The portfolio graph's <code>curate</code> step emits
-							content JSON only; a hand-built Jinja2 theme renders it deterministically, so a design
-							tweak is a token change rather than a full regeneration.
-						</p>
-						<p>
-							Tailoring runs <code>parse_jd &rarr; match &rarr; tailor &rarr; guard</code>, where
-							matching is deterministic keyword overlap rather than an LLM call. The
-							<b>truthfulness guard</b> requires every tailored bullet to trace to a specific
-							<code>(experience_id, bullet_index)</code> in the source profile, re-checking the
-							anchor itself instead of trusting the model's own "supported" flag. Anything
-							untraceable is excluded from exports rather than shipped silently.
-						</p>
-						<p>
-							Serverless and fully async: a FastAPI Lambda enqueues to SQS and returns immediately,
-							a container-image worker Lambda runs the LangGraph agents, and DynamoDB carries job
-							status the frontend polls. Shared Pydantic models enforce one schema across the API,
-							the LLM's structured output and the renderers. Publishing to GitHub is a separate,
-							explicit job &mdash; never a side effect of generating.
+							Two decisions shape it. <b>The LLM never writes HTML</b> &mdash; it emits content JSON
+							and a Jinja2 theme renders it, so a design tweak is a token change. And a
+							<b>truthfulness guard</b> anchors every tailored bullet to an
+							<code>(experience_id, bullet_index)</code> in the source profile; anything untraceable
+							is excluded rather than shipped silently. Runs async on AWS: FastAPI enqueues to SQS,
+							a worker Lambda runs the LangGraph agents, DynamoDB carries job status.
 						</p>
 						<div class="metrics">
 							<div><b>0</b><span>Lines of LLM-written HTML</span></div>
