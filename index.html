@@ -460,7 +460,57 @@
 
 				<div class="proj-grid">
 					<article class="card proj reveal">
-						<span class="proj-idx">PROJECT 01</span>
+						<span class="proj-idx">PROJECT 01 <em class="live-tag">Live</em></span>
+						<h3>Agentic Profile Manager</h3>
+						<p>
+							An event-driven multi-agent platform that turns a resume into a structured career
+							profile, then tailors it per target role, checks ATS readiness against a job
+							description, publishes a portfolio site from it, and tracks applications, recruiters
+							and interview prep in one workspace.
+						</p>
+						<p>
+							Three LangGraph agents do the work: a <b>parser</b> extracts structure from raw PDFs,
+							a <b>generator</b> engineers a responsive single-page site from the JSON profile, and a
+							<b>deployer</b> uses OAuth to create the GitHub repository, commit the source and
+							trigger a live deployment.
+						</p>
+						<p>
+							Long LLM runs used to die on 504 gateway timeouts, so I decoupled ingestion from
+							processing entirely: <b>Redis</b> brokers the queue and Pub/Sub streams each agent's
+							reasoning back over SSE, letting workers think for as long as they need while the UI
+							stays responsive. Ships to <b>AWS ECS Fargate</b> through GitHub Actions and ECR.
+						</p>
+						<div class="metrics">
+							<div><b>3</b><span>Orchestrated agents</span></div>
+							<div><b>SSE</b><span>Streamed agent reasoning</span></div>
+						</div>
+						<div class="chips">
+							<span>LangGraph</span><span>Gemini</span><span>Redis Pub/Sub</span><span>Flask</span>
+							<span>SSE</span><span>Next.js</span><span>Docker</span><span>AWS ECS Fargate</span>
+							<span>CloudFront</span><span>GitHub Actions</span>
+						</div>
+						<div class="proj-links">
+							<a href="https://d36v40mvb8e2yu.cloudfront.net/" target="_blank"
+								rel="noopener noreferrer">
+								Open the live app
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+							<a href="https://github.com/mohankrishnaganne/agentic-profile-manager" target="_blank"
+								rel="noopener noreferrer">
+								Source
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+
+					<article class="card proj reveal">
+						<span class="proj-idx">PROJECT 02</span>
 						<h3>Enterprise AI Knowledge Assistant</h3>
 						<p>
 							An enterprise knowledge assistant built with Python, RAG, embeddings and Pinecone —
@@ -483,7 +533,7 @@
 					</article>
 
 					<article class="card proj reveal" data-delay="0.08">
-						<span class="proj-idx">PROJECT 02</span>
+						<span class="proj-idx">PROJECT 03</span>
 						<h3>LLM Evaluation &amp; Guardrails Framework</h3>
 						<p>
 							A Python framework that measures retrieval relevance, response grounding, faithfulness,
