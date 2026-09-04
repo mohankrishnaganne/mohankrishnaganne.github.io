@@ -420,7 +420,7 @@ html[data-theme="light"] .portrait::after{ background:linear-gradient(180deg, tr
 .cert:hover .cert-link svg{ transform:translate(3px,-3px); }
 
 /* ---------- Contact ---------- */
-.contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+.contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:1rem; }
 .contact-card{ text-align:center; padding:2rem 1.25rem; }
 .contact-card .ico{
   width:46px; height:46px; margin:0 auto 1rem; border-radius:14px; display:grid; place-items:center;
@@ -428,7 +428,7 @@ html[data-theme="light"] .portrait::after{ background:linear-gradient(180deg, tr
 }
 .contact-card .ico svg{ width:20px; height:20px; }
 .contact-card span{ display:block; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--text-faint); margin-bottom:.4rem; }
-.contact-card a, .contact-card p{ font-weight:600; font-size:.95rem; word-break:break-word; }
+.contact-card a, .contact-card p{ font-weight:600; font-size:.9rem; overflow-wrap:break-word; }
 .contact-card a:hover{ color:var(--cyan); }
 
 .cta-panel{

@@ -125,8 +125,8 @@
   var typeEl = document.getElementById('role-text');
   if (typeEl) {
     var roles = [
-      'AI / ML Engineer',
-      'Generative AI & LLM Systems',
+      'Machine Learning Engineer',
+      'Generative AI & LLM Engineering',
       'MS Data Science @ Wichita State',
       'RAG // MLOps // Model Serving'
     ];
