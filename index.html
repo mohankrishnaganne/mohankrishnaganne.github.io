@@ -555,21 +555,38 @@
 						<span class="proj-idx">PROJECT 03</span>
 						<h3>LLM Evaluation &amp; Guardrails Framework</h3>
 						<p>
-							A Python framework that measures retrieval relevance, response grounding, faithfulness,
-							consistency and overall answer quality across representative evaluation scenarios.
+							A production framework that scores RAG workflows on five metrics &mdash; context
+							precision and recall, faithfulness, answer relevance and consistency &mdash; then
+							enforces guardrails in both directions: PII, injection, secrets and blocked topics on
+							the way in; leakage, contradicted claims and ungrounded answers on the way out.
 						</p>
 						<p>
-							Automated evaluation datasets and scoring workflows surface hallucinations, retrieval
-							failures and prompt weaknesses across RAG configurations, while prompt validation and
-							response guardrails catch unsupported claims and policy-sensitive outputs.
+							The policy calls are the interesting part. <b>Credentials always block</b> &mdash;
+							redacting a leaked key doesn't un-leak it. Fast regex checks short-circuit the
+							LLM-backed grounding call, since a decision that can't get more severe isn't worth the
+							latency. And a crashing guardrail <b>fails closed</b>. The CLI doubles as a CI gate,
+							separating <code>exit 1</code> (quality gate failed, block the deploy) from
+							<code>exit 2</code> (infrastructure broke, page someone).
 						</p>
 						<div class="metrics">
-							<div><b>5</b><span>Quality dimensions scored</span></div>
-							<div><b>Automated</b><span>Guardrail checks</span></div>
+							<div><b>5</b><span>Evaluation metrics</span></div>
+							<div><b>9</b><span>Guardrail rules</span></div>
+							<div><b>Fail-closed</b><span>Default on error</span></div>
 						</div>
 						<div class="chips">
-							<span>Python</span><span>LLM Evaluation</span><span>RAG</span>
-							<span>Prompt Engineering</span><span>AWS</span>
+							<span>Python</span><span>Pydantic</span><span>AWS Bedrock</span><span>OpenAI</span>
+							<span>S3</span><span>CloudWatch</span><span>structlog</span><span>Presidio</span>
+							<span>Docker</span><span>mypy strict</span>
+						</div>
+						<div class="proj-links">
+							<a href="https://github.com/mohankrishnaganne/LLM-Evaluation-and-Guardrails-Framework"
+								target="_blank" rel="noopener noreferrer">
+								Source
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
 						</div>
 					</article>
 				</div>
