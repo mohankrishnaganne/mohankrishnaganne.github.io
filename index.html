@@ -1,89 +1,778 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>My Resume</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mohan Krishna Ganne — Machine Learning Engineer</title>
+	<meta name="description"
+		content="Mohan Krishna Ganne — Machine Learning Engineer specialising in Generative AI and LLM engineering. 6+ years building production ML and RAG systems. MS Data Science, Wichita State University.">
+	<meta name="author" content="Mohan Krishna Ganne">
+	<meta name="theme-color" content="#05070d">
+	<link rel="icon" href="images/resume-fav-icon.png">
+	<link rel="canonical" href="https://mohankrishnaganne.github.io/">
+
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Mohan Krishna Ganne — Machine Learning Engineer">
+	<meta property="og:description"
+		content="Production Generative AI, RAG and ML systems. 6+ years across enterprise software, semiconductor manufacturing, product analytics and supply chain.">
+	<meta property="og:image" content="images/profile_pic.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="css/site.css">
 </head>
+
 <body>
-	<div class="wraper">
-		<div class="container">
-		<div class="left-content p-30">
-			<div class="logo">
-				<a href="index.html">
-					<span>My</span>
-					<span>Resume</span>
-				</a>
-			</div>
-			<div class="nav">
-				<ul>
-					<li><a href="#Home">Home</a></li>
-					<li><a href="#About">About</a></li>
-					<li><a href="">Work Profile</a></li>
-					<li><a href="">Portfolio</a></li>
-					<li><a href="">Education</a></li>
-					<li><a href="">Contact</a></li>
-				</ul>
-			</div>
-			<div class="left-footer">
-				<div class="social-icons">
-					<ul>
-						<li><a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="foot-contact">
-					<ul>
-						<li>mohanganne99@gmail.com</li>
-						<li>+91 7996066016</li>
-					</ul>
-				</div>
-				
-<div class="copy-rights">Copyright &copy;2019 All rights reserved</div>
-			</div>
 
-		</div>
-		<div class="main-content">
-			<div class="section1 p-30" id="Home">
-			<div class="sec-title">
-	<div class="pg-sub-title">Home</div>
-	<div class="pg-title">My Profile</div>
-			</div>
-				<div class="d-flex-align-center">
-				<div class="user-img flex-1"><img src="images/my avatar.png"></div>
-				<div class="user-profile flex-1">
-					<div class="pro-details">
-						<div class="sm-text">HELLO EVERYBODY, I AM</div>
-						<div class="name">MOHAN KRISHNA G</div>
-						<div class="role">AUTOMATION Developer</div>
-
-					</div>
-					<div class="text">You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</div>
-					<div class="pr-list">
-						<ul>
-							<li><i class="fa fa-calendar" aria-hidden="true"></i> 15th Dec, 1999</li>
-							<li><i class="fa fa-phone" aria-hidden="true"></i> 7996066016</li>
-							<li><i class="fa fa-envelope" aria-hidden="true"></i> mohanganne99@gmail.com</li>
-							<li><i class="fa fa-map-marker" aria-hidden="true"></i> Bangalore, Karnataka</li>
-						</ul>
-					</div>
-			<div class="social-icons-head">
-					<ul>
-						<li><a href=""><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-
-				</div>
-			</div>
-			</div>
-
+	<!-- Loader -->
+	<div id="loader">
+		<div>
+			<div class="loader-mark">Loading&nbsp;Portfolio</div>
+			<div class="loader-bar"><i></i></div>
 		</div>
 	</div>
-</div>
+
+	<div id="progress"></div>
+
+	<!-- Ambient layers -->
+	<div class="aurora" aria-hidden="true"></div>
+	<div class="grid-veil" aria-hidden="true"></div>
+	<canvas id="neural" aria-hidden="true"></canvas>
+
+	<!-- Nav -->
+	<header class="site-nav">
+		<div class="nav-inner">
+			<a class="brand" href="#home">
+				<span class="dot"></span>
+				<span>Mohan Krishna Ganne<small>AI/ML Engineer</small></span>
+			</a>
+
+			<nav class="nav-links" id="nav-links" aria-label="Primary">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#skills">Skills</a>
+				<a href="#experience">Experience</a>
+				<a href="#projects">Projects</a>
+				<a href="#certifications">Certifications</a>
+				<a href="#contact">Contact</a>
+			</nav>
+
+			<div class="nav-actions">
+				<button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle colour theme">
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" aria-hidden="true">
+						<circle cx="12" cy="12" r="4"></circle>
+						<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+					</svg>
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+					</svg>
+				</button>
+				<button class="icon-btn" id="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"
+					aria-controls="nav-links">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+						aria-hidden="true">
+						<path d="M3 6h18M3 12h18M3 18h18"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<main>
+
+		<!-- ===================== HERO ===================== -->
+		<section class="hero" id="home">
+			<div class="wrap">
+				<div class="hero-grid">
+					<div class="hero-copy reveal">
+						<span class="eyebrow">Open to ML / GenAI roles &middot; Dallas, TX</span>
+
+						<h1>Turning messy data into<br><span class="grad-text">intelligent systems.</span></h1>
+
+						<div class="role" aria-label="Current focus">
+							<span id="role-text"></span><span class="caret" aria-hidden="true"></span>
+						</div>
+
+						<p class="hero-lede">
+							I'm Mohan Krishna Ganne — a Machine Learning Engineer with 6+ years building,
+							deploying and supporting production ML and Generative AI systems across enterprise
+							software, semiconductor manufacturing, product analytics and supply chain: RAG
+							pipelines, agent orchestration, LLM evaluation and reliable model serving.
+						</p>
+
+						<div class="hero-cta">
+							<a class="btn btn-primary" href="resume/Mohan-Krishna-Ganne-Resume.pdf"
+								download="Mohan-Krishna-Ganne-Resume.pdf">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+								</svg>
+								Download CV
+							</a>
+							<a class="btn btn-ghost" href="#projects">View Projects</a>
+							<a class="btn btn-ghost" href="https://github.com/mohankrishnaganne" target="_blank"
+								rel="noopener noreferrer">
+								<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+									<path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path>
+								</svg>
+								GitHub
+							</a>
+						</div>
+
+						<div class="hero-meta">
+							<div><span>Experience</span><strong>6+ Years</strong></div>
+							<div><span>Focus</span><strong>GenAI &middot; LLMOps</strong></div>
+							<div><span>Education</span><strong>MS Data Science</strong></div>
+							<div><span>Location</span><strong>Dallas, TX</strong></div>
+						</div>
+					</div>
+
+					<div class="portrait-wrap reveal" data-delay="0.15">
+						<div class="portrait-ring" aria-hidden="true"></div>
+						<div class="portrait">
+							<img src="images/profile_pic.jpg" alt="Portrait of Mohan Krishna Ganne" width="380"
+								height="475">
+						</div>
+						<div class="badge-float badge-a">
+							<span aria-hidden="true">&#9889;</span>
+							<div><b>+18%</b> forecast accuracy</div>
+						</div>
+						<div class="badge-float badge-b">
+							<span aria-hidden="true">&#128202;</span>
+							<div><b>&minus;24%</b> irrelevant retrievals</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== MARQUEE ===================== -->
+		<div class="marquee" aria-hidden="true">
+			<div class="marquee-track">
+				<span>Python</span><span>PyTorch</span><span>LangGraph</span><span>RAG</span><span>Hugging Face</span>
+				<span>MLflow</span><span>Databricks</span><span>PySpark</span><span>Kubernetes</span><span>SageMaker</span>
+				<span>Kafka</span><span>AWS</span>
+				<span>Python</span><span>PyTorch</span><span>LangGraph</span><span>RAG</span><span>Hugging Face</span>
+				<span>MLflow</span><span>Databricks</span><span>PySpark</span><span>Kubernetes</span><span>SageMaker</span>
+				<span>Kafka</span><span>AWS</span>
+			</div>
+		</div>
+
+		<!-- ===================== ABOUT ===================== -->
+		<section id="about">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">01 &mdash; About</span>
+					<h2>End-to-end ownership,<br>from experiment to production.</h2>
+				</div>
+
+				<div class="about-grid">
+					<div class="about-body reveal">
+						<p>
+							I build AI systems that survive contact with real users. Over the last six years
+							I've worked across enterprise software, semiconductor manufacturing, product
+							analytics and supply chain — building predictive models, RAG applications,
+							agent workflows and the pipelines that feed them.
+						</p>
+						<p>
+							My strength is the unglamorous middle: MLOps and LLMOps, model serving, evaluation
+							and reliability. A model that only works in a notebook isn't finished, so I take
+							ownership across the full lifecycle — data preparation, feature engineering,
+							experimentation, evaluation, deployment, monitoring and CI/CD.
+						</p>
+						<p>
+							Currently completing an MS in Data Science at Wichita State University while working
+							as an AI/ML Engineer at Adobe.
+						</p>
+
+						<div class="about-facts">
+							<div class="fact"><span>Profile</span><strong>ML &amp; Generative AI</strong></div>
+							<div class="fact"><span>Education</span><strong>MS Data Science</strong></div>
+							<div class="fact"><span>Domains</span><strong>Enterprise, semiconductor, supply
+									chain</strong></div>
+							<div class="fact"><span>Analytics</span><strong>Power BI &amp; Tableau</strong></div>
+							<div class="fact"><span>Ways of working</span><strong>Agile, Git, CI/CD, testing</strong>
+							</div>
+							<div class="fact"><span>Off the clock</span><strong>Travel, photography, hiking</strong>
+							</div>
+						</div>
+					</div>
+
+					<div class="reveal" data-delay="0.1">
+						<div class="card" style="padding:2rem">
+							<div class="col-label">Impact at a glance</div>
+							<div class="stats" style="margin-top:0">
+								<div class="stat">
+									<b data-count="6" data-suffix="+">0</b>
+									<span>Years building ML systems</span>
+								</div>
+								<div class="stat">
+									<b data-count="18" data-suffix="%">0</b>
+									<span>Forecast accuracy gain</span>
+								</div>
+								<div class="stat">
+									<b data-count="24" data-suffix="%">0</b>
+									<span>Fewer irrelevant retrievals</span>
+								</div>
+								<div class="stat">
+									<b data-count="4" data-suffix="">0</b>
+									<span>Industry domains shipped in</span>
+								</div>
+							</div>
+							<p style="color:var(--text-dim); font-size:.9rem; margin-top:1.25rem">
+								Figures reflect production systems and evaluated projects at Adobe and Intel.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== SKILLS ===================== -->
+		<section id="skills">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">02 &mdash; Toolkit</span>
+					<h2>The stack I reach for</h2>
+					<p>Grouped by where it sits in the lifecycle — from raw data to a served model.</p>
+				</div>
+
+				<div class="skill-grid">
+					<div class="card skill-card reveal">
+						<h3><i aria-hidden="true">&#60;&#62;</i> Programming &amp; Software Engineering</h3>
+						<div class="chips">
+							<span>Python</span><span>SQL</span><span>Pandas</span><span>NumPy</span>
+							<span>REST APIs</span><span>FastAPI</span><span>Git</span><span>Unit Testing</span>
+							<span>CI/CD</span><span>Microservices</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.05">
+						<h3><i aria-hidden="true">&#129504;</i> Machine Learning &amp; Deep Learning</h3>
+						<div class="chips">
+							<span>PyTorch</span><span>Scikit-learn</span><span>XGBoost</span><span>Classification</span>
+							<span>Regression</span><span>Neural Networks</span><span>Time-Series Forecasting</span>
+							<span>Anomaly Detection</span><span>Feature Engineering</span><span>Model Evaluation</span>
+							<span>Error Analysis</span><span>Statistical Modeling</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.1">
+						<h3><i aria-hidden="true">&#10024;</i> Generative AI &amp; NLP</h3>
+						<div class="chips">
+							<span>LLMs</span><span>RAG</span><span>Hugging Face Transformers</span><span>Embeddings</span>
+							<span>Vector Search</span><span>Semantic Search</span><span>Prompt Engineering</span>
+							<span>NLP</span><span>LangChain</span><span>LangGraph</span><span>AI Agents</span>
+							<span>Agent Orchestration</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.15">
+						<h3><i aria-hidden="true">&#128269;</i> LLM Evaluation &amp; Retrieval</h3>
+						<div class="chips">
+							<span>RAG Evaluation</span><span>Retrieval Evaluation</span><span>Similarity Search</span>
+							<span>Metadata Filtering</span><span>Groundedness</span><span>Faithfulness</span>
+							<span>Answer Relevance</span><span>Hallucination Detection</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal">
+						<h3><i aria-hidden="true">&#129518;</i> Vector Technologies</h3>
+						<div class="chips">
+							<span>FAISS</span><span>Pinecone</span><span>pgvector</span><span>Vector Databases</span>
+							<span>Embedding Search</span><span>Semantic Retrieval</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.05">
+						<h3><i aria-hidden="true">&#9881;</i> MLOps &amp; LLMOps</h3>
+						<div class="chips">
+							<span>MLflow</span><span>Experiment Tracking</span><span>Model Registry</span>
+							<span>Model Deployment</span><span>Model Serving</span><span>Batch Inference</span>
+							<span>Real-Time Inference</span><span>Model Monitoring</span><span>Data Drift</span>
+							<span>Automated Validation</span><span>AI Observability</span><span>Docker</span>
+							<span>Kubernetes</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.1">
+						<h3><i aria-hidden="true">&#9729;</i> Cloud &amp; ML Platforms</h3>
+						<div class="chips">
+							<span>AWS</span><span>SageMaker</span><span>S3</span><span>Lambda</span><span>Glue</span>
+							<span>EMR</span><span>Redshift</span><span>Bedrock</span><span>Databricks</span>
+							<span>Azure</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal" data-delay="0.15">
+						<h3><i aria-hidden="true">&#128225;</i> Big Data &amp; Streaming</h3>
+						<div class="chips">
+							<span>Spark</span><span>PySpark</span><span>Kafka</span><span>Databricks</span>
+							<span>Delta Lake</span><span>Airflow</span><span>Batch Processing</span>
+							<span>Stream Processing</span>
+						</div>
+					</div>
+
+					<div class="card skill-card reveal">
+						<h3><i aria-hidden="true">&#128200;</i> Analytics</h3>
+						<div class="chips">
+							<span>Product Analytics</span><span>KPI Development</span><span>Root-Cause Analysis</span>
+							<span>Power BI</span><span>Tableau</span>
+						</div>
+					</div>
+				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== EXPERIENCE ===================== -->
+		<section id="experience">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">03 &mdash; Résumé</span>
+					<h2>Experience &amp; education</h2>
+					<p>Six years across enterprise software and semiconductor manufacturing.</p>
+				</div>
+
+				<div class="two-col">
+					<div>
+						<div class="col-label reveal">Professional experience</div>
+
+						<div class="timeline">
+							<article class="tl-item reveal">
+								<div class="tl-head">
+									<h3>AI/ML Engineer</h3>
+									<span class="tl-date">May 2025 &mdash; Present</span>
+								</div>
+								<span class="tl-org">Adobe, United States</span>
+								<ul class="tl-list">
+									<li>Architected <b>Python and PySpark</b> machine learning workflows on AWS, turning
+										high-volume product and customer data into reliable datasets for experimentation,
+										predictive modeling and enterprise AI applications.</li>
+									<li>Built Generative AI solutions using LLMs, <b>retrieval-augmented generation</b>,
+										embeddings, semantic search and vector retrieval to improve contextual knowledge
+										discovery and response quality across intelligent product experiences.</li>
+									<li>Engineered reusable feature-generation pipelines for structured, unstructured and
+										behavioral data, standardising model inputs across development, evaluation,
+										inference and downstream ML workflows.</li>
+									<li>Evaluated RAG applications through retrieval quality, response relevance, grounding
+										and model behaviour analysis, strengthening quality assessment for Generative AI
+										solutions and supporting production readiness.</li>
+									<li>Operationalised the ML lifecycle through <b>MLflow</b>, automated validation, CI/CD,
+										model monitoring and deployment controls, enabling reliable transitions from
+										experimentation to production.</li>
+									<li>Optimised scalable batch and streaming workloads with PySpark, Apache Spark, Kafka
+										and AWS, improving data-processing reliability for near real-time machine learning
+										consumption.</li>
+									<li>Implemented Python <b>REST and FastAPI services</b> for ML inference and AI
+										application integration, applying unit testing and CI/CD practices to strengthen
+										production AI workflows.</li>
+								</ul>
+							</article>
+
+							<article class="tl-item reveal">
+								<div class="tl-head">
+									<h3>Machine Learning Engineer</h3>
+									<span class="tl-date">Dec 2019 &mdash; Jul 2024</span>
+								</div>
+								<span class="tl-org">Intel, India</span>
+								<ul class="tl-list">
+									<li>Developed predictive ML models with Python, SQL, Scikit-learn and XGBoost for
+										semiconductor manufacturing and product analytics, improving forecast accuracy by
+										<b>18%</b> across operational use cases.</li>
+									<li>Identified manufacturing defects, equipment abnormalities, process deviations and
+										silicon-test performance patterns through classification and <b>anomaly-detection</b>
+										models across complex production datasets.</li>
+									<li>Forecasted demand, capacity requirements, inventory levels and supply-chain trends
+										through time-series modeling and historical production analysis, supporting
+										operational planning and resource optimisation.</li>
+									<li>Strengthened model reliability through feature engineering, evaluation, error
+										analysis and root-cause investigation, improving predictive performance and
+										identifying model limitations ahead of operational deployment.</li>
+									<li>Extracted contextual information from unstructured engineering and operational
+										content using NLP, embeddings and semantic retrieval, enabling automated knowledge
+										discovery across complex technical datasets.</li>
+									<li>Productionised ML workflows by integrating feature pipelines, model validation,
+										inference processes and analytical outputs into operational environments, working
+										with Data Engineering, MLOps, Product and Supply Chain teams.</li>
+								</ul>
+							</article>
+						</div>
+					</div>
+
+					<div>
+						<div class="col-label reveal">Education</div>
+						<div class="edu">
+							<div class="card edu-card reveal">
+								<div>
+									<h3>Master of Science, Data Science</h3>
+									<span class="tl-org">Wichita State University, Kansas &middot; Aug 2024 &ndash; May
+										2026</span>
+								</div>
+								<span class="gpa">3.8 / 4.0</span>
+							</div>
+							<div class="card edu-card reveal" data-delay="0.05">
+								<div>
+									<h3>Bachelor of Engineering</h3>
+									<span class="tl-org">Ramaiah Institute of Technology &middot; 2017 &ndash;
+										2021</span>
+								</div>
+								<span class="gpa">9.13 / 10</span>
+							</div>
+						</div>
+
+						<div class="col-label reveal" style="margin-top:2.5rem">Full résumé</div>
+						<div class="card reveal" data-delay="0.05">
+							<p style="color:var(--text-dim); font-size:.95rem; margin-bottom:1.25rem">
+								Want the detailed version — full project list, tooling and references?
+								Grab the PDF.
+							</p>
+							<a class="btn btn-primary" href="resume/Mohan-Krishna-Ganne-Resume.pdf"
+								download="Mohan-Krishna-Ganne-Resume.pdf">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+								</svg>
+								Download résumé (PDF)
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== PROJECTS ===================== -->
+		<section id="projects">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">04 &mdash; Work</span>
+					<h2>Selected projects</h2>
+					<p>Systems I designed and shipped end to end.</p>
+				</div>
+
+				<div class="proj-grid">
+					<article class="card proj reveal">
+						<span class="proj-idx">PROJECT 01 <em class="live-tag">Live</em></span>
+						<h3>Portfolio Manager &mdash; multi-agent career platform</h3>
+						<p>
+							Turns a resume into a canonical, versioned profile, then generates a published
+							portfolio site and JD-tailored resumes from it &mdash; with ATS scoring, job search,
+							outreach drafts and application tracking built around the same source.
+						</p>
+						<p>
+							Two decisions shape it. <b>The LLM never writes HTML</b> &mdash; it emits content JSON
+							and a Jinja2 theme renders it, so a design tweak is a token change. And a
+							<b>truthfulness guard</b> anchors every tailored bullet to an
+							<code>(experience_id, bullet_index)</code> in the source profile; anything untraceable
+							is excluded rather than shipped silently. Runs async on AWS: FastAPI enqueues to SQS,
+							a worker Lambda runs the LangGraph agents, DynamoDB carries job status.
+						</p>
+						<div class="metrics">
+							<div><b>0</b><span>Lines of LLM-written HTML</span></div>
+							<div><b>100%</b><span>Exported bullets traced to source</span></div>
+						</div>
+						<div class="chips">
+							<span>LangGraph</span><span>Gemini 2.5 Flash</span><span>FastAPI</span>
+							<span>AWS Lambda</span><span>SQS</span><span>DynamoDB</span><span>Cognito</span>
+							<span>S3 + CloudFront</span><span>Next.js</span><span>Jinja2</span>
+							<span>WeasyPrint</span><span>AWS SAM</span><span>Pydantic</span>
+						</div>
+						<div class="proj-links">
+							<a href="https://d36v40mvb8e2yu.cloudfront.net/" target="_blank"
+								rel="noopener noreferrer">
+								Open the live app
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+							<a href="https://github.com/mohankrishnaganne/agentic-profile-manager/tree/DevBranch2.0"
+								target="_blank" rel="noopener noreferrer">
+								Source
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+
+					<article class="card proj reveal">
+						<span class="proj-idx">PROJECT 02 <em class="live-tag">Live</em></span>
+						<h3>Enterprise AI Knowledge Assistant</h3>
+						<p>
+							An agentic RAG system that checks its own work. It routes each question to a document
+							category, grades every retrieved chunk with an LLM judge, and &mdash; when nothing
+							survives &mdash; <b>rewrites its own query and searches again</b>, declining to answer
+							rather than guessing once the retry budget is spent.
+						</p>
+						<p>
+							Built as a bounded LangGraph cycle, with every answer exposing its full agent trace in
+							the UI. Quality is measured rather than claimed: retrieval is benchmarked on a
+							<b>held-out split</b> the parameters were never tuned against, and both reports are
+							generated by committed scripts &mdash; including the two findings that contradicted the
+							original design.
+						</p>
+						<div class="metrics">
+							<div><b>&minus;90%</b><span>Irrelevant chunks retrieved</span></div>
+							<div><b>0.95</b><span>RAGAS faithfulness</span></div>
+							<div><b>100%</b><span>Answer coverage kept</span></div>
+						</div>
+						<div class="chips">
+							<span>LangGraph</span><span>Groq gpt-oss</span><span>Pinecone</span>
+							<span>bge-small-en-v1.5</span><span>FastAPI</span><span>SSE</span>
+							<span>Streamlit</span><span>RAGAS</span><span>Docker</span>
+						</div>
+						<div class="proj-links">
+							<a href="https://enterprise-ai-assistant-rag.streamlit.app/" target="_blank"
+								rel="noopener noreferrer">
+								Try the live demo
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+							<a href="https://github.com/mohankrishnaganne/Enterprise-AI-Knowledge-Assistant"
+								target="_blank" rel="noopener noreferrer">
+								Source
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+
+					<article class="card proj reveal" data-delay="0.08">
+						<span class="proj-idx">PROJECT 03</span>
+						<h3>LLM Evaluation &amp; Guardrails Framework</h3>
+						<p>
+							A production framework that scores RAG workflows on five metrics &mdash; context
+							precision and recall, faithfulness, answer relevance and consistency &mdash; then
+							enforces guardrails in both directions: PII, injection, secrets and blocked topics on
+							the way in; leakage, contradicted claims and ungrounded answers on the way out.
+						</p>
+						<p>
+							The policy calls are the interesting part. <b>Credentials always block</b> &mdash;
+							redacting a leaked key doesn't un-leak it. Fast regex checks short-circuit the
+							LLM-backed grounding call, since a decision that can't get more severe isn't worth the
+							latency. And a crashing guardrail <b>fails closed</b>. The CLI doubles as a CI gate,
+							separating <code>exit 1</code> (quality gate failed, block the deploy) from
+							<code>exit 2</code> (infrastructure broke, page someone).
+						</p>
+						<div class="metrics">
+							<div><b>5</b><span>Evaluation metrics</span></div>
+							<div><b>9</b><span>Guardrail rules</span></div>
+							<div><b>Fail-closed</b><span>Default on error</span></div>
+						</div>
+						<div class="chips">
+							<span>Python</span><span>Pydantic</span><span>AWS Bedrock</span><span>OpenAI</span>
+							<span>S3</span><span>CloudWatch</span><span>structlog</span><span>Presidio</span>
+							<span>Docker</span><span>mypy strict</span>
+						</div>
+						<div class="proj-links">
+							<a href="https://github.com/mohankrishnaganne/LLM-Evaluation-and-Guardrails-Framework"
+								target="_blank" rel="noopener noreferrer">
+								Source
+								<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+									stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+
+				<div class="cta-panel reveal" data-delay="0.1">
+					<h3>More experiments live on <span class="grad-text">GitHub</span></h3>
+					<p>Notebooks, prototypes and the occasional weekend rabbit hole — all open source.</p>
+					<div class="cta-actions">
+						<a class="btn btn-primary" href="https://github.com/mohankrishnaganne" target="_blank"
+							rel="noopener noreferrer">Browse repositories</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== CERTIFICATIONS ===================== -->
+		<section id="certifications">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">05 &mdash; Credentials</span>
+					<h2>Certifications</h2>
+					<p>Courses completed, verified and applied on the job.</p>
+				</div>
+
+				<div class="cert-grid">
+					<article class="card cert reveal">
+						<div class="cert-img">
+							<img src="images/power BI course cert.jpg"
+								alt="Microsoft Power BI course completion certificate" loading="lazy">
+						</div>
+						<div class="cert-body">
+							<h3>Microsoft Power BI &mdash; The Practical Guide</h3>
+							<p>Data modelling, DAX and building insightful, decision-ready dashboards.</p>
+							<a class="cert-link"
+								href="https://www.udemy.com/certificate/UC-c51a5dbc-07c9-4340-a2f9-8b9a500b3f59/"
+								target="_blank" rel="noopener noreferrer">
+								View credential
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+
+					<article class="card cert reveal" data-delay="0.08">
+						<div class="cert-img">
+							<img src="images/Selenium webdriver course cert.jpg"
+								alt="Selenium WebDriver with Java course completion certificate" loading="lazy">
+						</div>
+						<div class="cert-body">
+							<h3>Selenium WebDriver with Java &mdash; Basics to Frameworks</h3>
+							<p>Automating web and mobile applications end to end, with Git-based workflows.</p>
+							<a class="cert-link"
+								href="https://www.udemy.com/certificate/UC-9a3ec085-9ef1-49f5-885a-1c8c10924f8e/"
+								target="_blank" rel="noopener noreferrer">
+								View credential
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+									stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+									<path d="M7 17 17 7M9 7h8v8"></path>
+								</svg>
+							</a>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===================== CONTACT ===================== -->
+		<section id="contact">
+			<div class="wrap">
+				<div class="section-head reveal">
+					<span class="eyebrow">06 &mdash; Contact</span>
+					<h2>Let's build something</h2>
+					<p>Open to machine learning and Generative AI roles. The fastest route is email.</p>
+				</div>
+
+				<div class="contact-grid">
+					<div class="card contact-card reveal">
+						<div class="ico">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path>
+								<circle cx="12" cy="10" r="3"></circle>
+							</svg>
+						</div>
+						<span>Location</span>
+						<p>Dallas, Texas, USA</p>
+					</div>
+
+					<div class="card contact-card reveal" data-delay="0.05">
+						<div class="ico">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"></path>
+							</svg>
+						</div>
+						<span>Phone</span>
+						<a href="tel:+13165121074">+1 (316) 512-1074</a>
+					</div>
+
+					<div class="card contact-card reveal" data-delay="0.1">
+						<div class="ico">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+								<path d="m22 6-10 7L2 6"></path>
+							</svg>
+						</div>
+						<span>Email</span>
+						<a href="mailto:mohan.krishna.ganne@gmail.com">mohan.krishna.ganne@gmail.com</a>
+					</div>
+
+					<div class="card contact-card reveal" data-delay="0.15">
+						<div class="ico">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+								<path d="M14 2v6h6M16 13H8M16 17H8"></path>
+							</svg>
+						</div>
+						<span>Résumé</span>
+						<a href="resume/Mohan-Krishna-Ganne-Resume.pdf"
+							download="Mohan-Krishna-Ganne-Resume.pdf">Download PDF</a>
+					</div>
+				</div>
+
+				<div class="cta-panel reveal" data-delay="0.1">
+					<h3>Have a question or an opportunity?</h3>
+					<p>Drop me a line, connect on LinkedIn, or send it through the quick form.</p>
+					<div class="cta-actions">
+						<a class="btn btn-primary" href="mailto:mohan.krishna.ganne@gmail.com">Email me</a>
+						<a class="btn btn-ghost" href="https://www.linkedin.com/in/i-am-mohankrishna/" target="_blank"
+							rel="noopener noreferrer">Connect on LinkedIn</a>
+						<a class="btn btn-ghost" href="https://forms.gle/yBjYH7Mj7BhVxm9c7" target="_blank"
+							rel="noopener noreferrer">Quick form</a>
+					</div>
+
+					<div class="socials">
+						<a href="https://www.linkedin.com/in/i-am-mohankrishna/" target="_blank"
+							rel="noopener noreferrer" aria-label="LinkedIn">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.4 8.75 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.57-2.33 3.2V21H9z"></path>
+							</svg>
+						</a>
+						<a href="https://github.com/mohankrishnaganne" target="_blank" rel="noopener noreferrer"
+							aria-label="GitHub">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"></path>
+							</svg>
+						</a>
+						<a href="https://twitter.com/mohan__krishna_g/" target="_blank" rel="noopener noreferrer"
+							aria-label="Twitter">
+							<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+								<path d="M18.9 2H22l-7 8 8.2 12h-6.4l-5-7.3L5.9 22H2.7l7.5-8.6L2.3 2h6.6l4.5 6.7zm-1.1 18h1.8L7.3 3.9H5.4z"></path>
+							</svg>
+						</a>
+						<a href="https://www.instagram.com/mohan__krishna_g/" target="_blank" rel="noopener noreferrer"
+							aria-label="Instagram">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								aria-hidden="true">
+								<rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
+								<circle cx="12" cy="12" r="4"></circle>
+								<circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap footer-inner">
+			<p>&copy; <span id="year">2026</span> Mohan Krishna Ganne. All rights reserved.</p>
+			<a class="to-top" href="#home">
+				Back to top
+				<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+					stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M12 19V5M5 12l7-7 7 7"></path>
+				</svg>
+			</a>
+		</div>
+	</footer>
+
+	<script src="js/site.js"></script>
 </body>
+
 </html>
